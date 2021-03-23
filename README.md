@@ -1,0 +1,1 @@
+Click 'n meal app v2 by Thomas de Groot and Cindy Teeven
