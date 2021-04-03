@@ -5,8 +5,8 @@ const UserModel = require('../models/User.model');
 
 // POST route for creating a recipe
 router.post('/create', (req, res, next) => {
-  const {name, description, instructions} = req.body;
-  RecipeModel.create({name, description, instructions})
+  const {name, description, instructions, time, priceCategory, ingredients, rating, source, creator, weekday, mealType, allIngr} = req.body;
+  RecipeModel.create({name, description, instructions, time, priceCategory, ingredients, rating, source, creator, weekday, mealType, allIngr})
     .then((response) => {
       res.status(200).json(response)
     })
@@ -20,9 +20,9 @@ router.post('/create', (req, res, next) => {
 
 router.patch('/recipe/:id', (req, res, next) => {
   const { id } = req.params;
-  const { name, description, instructions, ingredients } = req.body;
+  const { name, description, instructions, time, priceCategory, ingredients, rating, source, creator, weekday, mealType, allIngr} = req.body;
 
-  RecipeModel.findByIdAndUpdate(id, {$set: {name, description, instructions, ingredients}}, {new: true})
+  RecipeModel.findByIdAndUpdate(id, {$set: {name, description, instructions, time, priceCategory, ingredients, rating, source, creator, weekday, mealType, allIngr}}, {new: true})
     .then((response) => {
       req.session.loggedInUser = response;
       res.status(200).json(response);
@@ -34,5 +34,20 @@ router.patch('/recipe/:id', (req, res, next) => {
       })
     })
 });
+
+router.delete('/recipe/:id', (req, res, next) => {
+  const { id } = req.params;
+
+  RecipeModel.findByIdAndDelete(id)
+    .then((deletedRecipe) => {
+      res.status(200).json(deletedRecipe)
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: 'Recipe could not be deleted',
+        message: err
+      })
+    })
+})
 
 module.exports = router
