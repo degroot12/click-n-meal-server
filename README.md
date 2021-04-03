@@ -11,7 +11,7 @@ Click 'n meal app v2 by Thomas de Groot and Cindy Teeven
 | POST        | `/auth/logout`              | (empty)                      | 204            | 500          | Logs out the user                                            |
 | POST        | `/api/create`             | {name, description, instructions, ingredients}  | 200   | 500        | Adds a new recipe to the database   |
 | GET         | `/api/recipe/:id`            | (empty)                      | 200          | 500             | Show recipe details. Wrong id gives(500)     |
-| PATCH       | `/api/recipe/:id`            | {name, description, instructions, ingredients} | 200   | 400  | Edits the venue with the given id   |
+| PATCH       | `/api/recipe/:id`            | {name, description, instructions, ingredients} | 200   | 400  | Edits the recipe with the given id   |
 <!-- | PATCH       | `/api/musician-profile/edit` |                              | 201            | 400          | Show specific element    |
 | PATCH       | `/api/owner-profile/edit`    |                              | 201            | 400          | Show specific element    |
 | DELETE      | `/api/venue/:id`             | (empty)                      | 201            | 400          | Delete venue                                              | -->
