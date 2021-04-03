@@ -9,11 +9,11 @@ Click 'n meal app v2 by Thomas de Groot and Cindy Teeven
 | POST        | `/api/signup`               | {email, password}            | 200            | 409          |  Checks if user doesn't already exist(409)                   |
 | POST        | `/api/signin`               | {email, password}            | 200            | 401,500      | Check if passwords match (401), if user exists (500)         |
 | POST        | `/auth/logout`              | (empty)                      | 204            | 500          | Logs out the user                                            |
-<!-- | POST        | `/api/add-venue`             | {title, imgUrl, location, size, owner}  | 200   | 400        | Adds a new venue to owner's venue list   |
-| GET         | `/api/musician/:id`          | (empty)                      | 200          | 400             | Show musician details with given id    |
+| POST        | `/api/create`             | {name, description, instructions, ingredients}  | 200   | 500        | Adds a new recipe to the database   |
+| GET         | `/api/create`          | (empty)                      | 200          | 500             | Show create page   |
 | GET         | `/api/venue/:id`             | (empty)                      | 200          | 400             | Show venue details with the given id     |
 | PATCH       | `/api/venue/:id`             | {title, imgUrl, location, size, owner} | 200   | 400          | Edits the venue with the given id   |
 | PATCH       | `/api/musician-profile/edit` |                              | 201            | 400          | Show specific element    |
 | PATCH       | `/api/owner-profile/edit`    |                              | 201            | 400          | Show specific element    |
-| DELETE      | `/api/venue/:id`             | (empty)                      | 201            | 400          | Delete venue                                              | -->
+| DELETE      | `/api/venue/:id`             | (empty)                      | 201            | 400          | Delete venue                                              |
 <!-- | DELETE      | `/api/profile/:id`           | (empty)                      | 201            | 400          | Delete musician profile           | -->
