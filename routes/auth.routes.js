@@ -39,15 +39,16 @@ router.post('/signup', (req, res) => {
     // creating a salt 
     let salt = bcrypt.genSaltSync(10);
     let hash = bcrypt.hashSync(password, salt);
-    UserModel.create({name: username, email, passwordHash: hash})
+    UserModel.create({username, email, password: hash})
       .then((user) => {
+        console.log(user)
         // ensuring that we don't share the hash as well with the user
         user.passwordHash = "***";
         res.status(200).json(user);
       })
       .catch((err) => {
         if (err.code === 11000) {
-          res.status(500).json({
+          res.status(409).json({
             errorMessage: 'username or email entered already exists!',
             message: err,
           });
@@ -86,18 +87,18 @@ router.post('/signin', (req, res) => {
     UserModel.findOne({email})
       .then((userData) => {
            //check if passwords match
-          bcrypt.compare(password, userData.passwordHash)
+          bcrypt.compare(password, userData.password)
             .then((doesItMatch) => {
                 //if it matches
                 if (doesItMatch) {
                   // req.session is the special object that is available to you
-                  userData.passwordHash = "***";
+                  userData.password = "***";
                   req.session.loggedInUser = userData;
                   res.status(200).json(userData)
                 }
                 //if passwords do not match
                 else {
-                    res.status(500).json({
+                    res.status(401).json({
                         error: 'Passwords don\'t match',
                     })
                   return; 
