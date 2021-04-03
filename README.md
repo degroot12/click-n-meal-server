@@ -6,7 +6,7 @@ Click 'n meal app v2 by Thomas de Groot and Cindy Teeven
 | HTTP Method | URL                         | Request Body                 | Success status | Error Status | Description                                                  |
 | ----------- | --------------------------- | ---------------------------- | -------------- | ------------ | ------------------------------------------------------------ |
 | GET         | `/api/profile`              | Saved session                | 200            | 404          | Check if user is logged in and return profile page           |
-| POST        | `/api/signup`               | {email, password}            | 200            | 409          |  Checks if user doesn't already exist(409)                   |
+| POST        | `/api/signup`               | {email, password, username}            | 200            | 409          |  Checks if user doesn't already exist(409)                   |
 | POST        | `/api/signin`               | {email, password}            | 200            | 401,500      | Check if passwords match (401), if user exists (500)         |
 | POST        | `/auth/logout`              | (empty)                      | 204            | 500          | Logs out the user                                            |
 | POST        | `/api/create`             | {name, description, instructions, ingredients}  | 200   | 500        | Adds a new recipe to the database   |
