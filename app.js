@@ -43,6 +43,11 @@ app.use('/api', allRoutes);
 const recipeRoutes = require('./routes/recipes.routes');
 app.use('/api', recipeRoutes);
 
+// public routes
+const publicRoutes = require('./routes/public.routes');
+app.use('/api', publicRoutes)
+
+
 //Auth routes here
 const authRoutes = require('./routes/auth.routes');
 app.use('/api', authRoutes);
