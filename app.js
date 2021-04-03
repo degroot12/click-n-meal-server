@@ -47,10 +47,13 @@ app.use('/api', recipeRoutes);
 const publicRoutes = require('./routes/public.routes');
 app.use('/api', publicRoutes)
 
-
 //Auth routes here
 const authRoutes = require('./routes/auth.routes');
 app.use('/api', authRoutes);
+
+//Route for uploading picture cloudinary
+const cloudinaryRoutes = require('./routes/cloudinary.routes');
+app.use('/api', cloudinaryRoutes)
 
 
 
