@@ -70,14 +70,14 @@ router.post('/signin', (req, res) => {
     /*
     if ( !email || !password) {
         res.status(500).json({
-            error: 'Please enter Username. email and password',
+            errorMessage: 'Please enter Username. email and password',
        })
       return;  
     }
     const myRegex = new RegExp(/^[a-z0-9](?!.*?[^\na-z0-9]{2})[^\s@]+@[^\s@]+\.[^\s@]+[a-z0-9]$/);
     if (!myRegex.test(email)) {
         res.status(500).json({
-            error: 'Email format not correct',
+            errorMessage: 'Email format not correct',
         })
         return;  
     }
@@ -99,14 +99,14 @@ router.post('/signin', (req, res) => {
                 //if passwords do not match
                 else {
                     res.status(401).json({
-                        error: 'Passwords don\'t match',
+                        errorMessage: 'Passwords don\'t match',
                     })
                   return; 
                 }
             })
             .catch(() => {
                 res.status(500).json({
-                    error: 'Email format not correct',
+                    errorMessage: 'Email format not correct',
                 })
               return; 
             });
