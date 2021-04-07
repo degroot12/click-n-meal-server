@@ -5,6 +5,7 @@ const RecipeSchema = new mongoose.Schema({
   name: String,
   image: {
     type: String,
+    default: 'https://images.unsplash.com/photo-1525999147711-835474620964?ixid=MXwxMjA3fDB8MHxzZWFy[…]58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
   },
   description: String,
   instructions: String,
@@ -15,17 +16,19 @@ const RecipeSchema = new mongoose.Schema({
   },
   ingredients: [{
     name: {
-      type: String,
-      required: true
+      // type: mongoose.Schema.Types.ObjectId,
+      // ref: 'ingredient',
+      // required: true
+      type:String,
     },
     unit: {
       type: String,
       enum: ['piece', 'g', 'spoon', 'tablespoon', 'l', 'pinch', 'ml'],
-      required: true
+      // required: true
     },
     amount: {
       type: Number,
-      required: true
+      // required: true
     }
   }],
   rating: {
@@ -42,10 +45,10 @@ const RecipeSchema = new mongoose.Schema({
     type: String,
     enum: ['meat', 'vegetarian', 'vegan']
   },
-  allIngr: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'ingredient'
-  }
+  // allIngr: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'ingredient'
+  // }
 });
 
 const RecipeModel = mongoose.model('recipe', RecipeSchema);
