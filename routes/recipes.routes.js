@@ -12,7 +12,7 @@ router.post('/create', (req, res, next) => {
     })
     .catch((err) => {
       res.status(500).json({
-        error: 'Something went wrong creating a recipe',
+        errorMessage: 'Something went wrong creating a recipe',
         message: err
       })
     })
@@ -29,7 +29,7 @@ router.patch('/recipe/:id', (req, res, next) => {
     })
     .catch((err) => {
       res.status(500).json({
-        error: 'Something went wrong while editing recipe',
+        errorMessage: 'Something went wrong while editing recipe',
         message: err
       })
     })
@@ -44,7 +44,7 @@ router.delete('/recipe/:id', (req, res, next) => {
     })
     .catch((err) => {
       res.status(500).json({
-        error: 'Recipe could not be deleted',
+        errorMessage: 'Recipe could not be deleted',
         message: err
       })
     })

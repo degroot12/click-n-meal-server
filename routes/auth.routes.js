@@ -114,7 +114,7 @@ router.post('/signin', (req, res) => {
       //throw an error if the user does not exists 
       .catch((err) => {
         res.status(500).json({
-            error: 'Email does not exist',
+            errorMessage: 'Email does not exist',
             message: err
         })
         return;  
@@ -138,7 +138,7 @@ const isLoggedIn = (req, res, next) => {
   }
   else {
       res.status(401).json({
-          message: 'Unauthorized user',
+          errorMessage: 'Unauthorized user',
           code: 401,
       })
   };

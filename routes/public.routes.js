@@ -17,7 +17,7 @@ router.get('/recipe/:id', (req, res, next) => {
     })
     .catch((err) => {
       res.status(500).json({
-        error: 'Something went wrong when getting Recipe details',
+        errorMessage: 'Something went wrong when getting Recipe details',
         message: err
       })
     });
