@@ -1,6 +1,22 @@
 const router = require('express').Router();
 const RecipeModel = require('../models/Recipe.model');
+const IngredientsModel = require('../models/Ingredients.model')
 const UserModel = require('../models/User.model');
+
+// GET route for retrieving ingriedients 
+router.get('/get-ingredients', (req, res, next) => {
+  
+  IngredientsModel
+    .find()
+    .then((ingredients) => {
+      res.status(200).json(ingredients)
+    })
+    .catch((err) => {
+      res.status(500).json({
+        errorMessage: 'something went wrong while retrieving the ingredientslist',
+        message: err })
+    })
+}) 
 
 
 // POST route for creating a recipe
@@ -8,6 +24,7 @@ router.post('/create-recipe', (req, res, next) => {
   // const {name, description, instructions, time, priceCategory, ingrName, ingrUnit, ingrAmount, rating, source, creator, weekday, mealType, allIngr} = req.body;
   const {name, ingredients} = req.body;
   
+  console.log('ingredients---', ingredients)
 
   // let newIngredientObj = {
   //   ingrName,
