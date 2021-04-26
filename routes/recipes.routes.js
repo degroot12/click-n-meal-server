@@ -9,7 +9,10 @@ router.get('/get-ingredients', (req, res, next) => {
   IngredientsModel
     .find()
     .then((ingredients) => {
-      res.status(200).json(ingredients)
+      const ingrObj = ingredients.map((singleIngredient)=> {
+        return {value: singleIngredient.name, lable: singleIngredient.name}
+      })
+      res.status(200).json(ingrObj)
     })
     .catch((err) => {
       res.status(500).json({
